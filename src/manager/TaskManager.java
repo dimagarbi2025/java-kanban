@@ -1,3 +1,10 @@
+package manager;
+
+import model.Epic;
+import model.Subtask;
+import model.Task;
+import model.TaskStatus;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -8,7 +15,7 @@ public class TaskManager {
     HashMap<Integer, Subtask> subtasks = new HashMap();
     private int nextId = 1;
 
-    // Методы Task
+    // Методы model.Task
     public List<Task> getAllTasks() {
         return new ArrayList(tasks.values());
     }
@@ -36,7 +43,7 @@ public class TaskManager {
         tasks.remove(id);
     }
 
-    // Методы для Epic
+    // Методы для model.Epic
 
     public List<Epic> getAllEpics(){
         return new ArrayList(epics.values());
@@ -86,7 +93,7 @@ public class TaskManager {
         return result;
     }
 
-    // Методы для Subtask
+    // Методы для model.Subtask
 
     public List<Subtask> getAllSubtasks(){
         return new ArrayList(subtasks.values());

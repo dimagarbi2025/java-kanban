@@ -1,5 +1,6 @@
+package model;
+
 import java.util.Objects;
-import java.util.Random;
 
 public class Task {
     private String name;
@@ -60,7 +61,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "model.Task{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", number=" + id +
