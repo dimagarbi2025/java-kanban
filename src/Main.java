@@ -13,7 +13,7 @@ public class Main {
 
         Subtask subtask1 = manager.createSubtask(new Subtask("Сбор коробок", "Собрать коробки для переезда", 0, epic1.getId()));
         Subtask subtask2 = manager.createSubtask(new Subtask("Упаковка вещей", "Упаковать вещи в коробки", 0, epic1.getId()));
-        Subtask subtask3 = manager.createSubtask(new Subtask("Перевозка", "Организовать перевозку вещей", 0, epic1.getId()));
+
 
         // Выводим все задачи
         System.out.println("Все задачи:");
