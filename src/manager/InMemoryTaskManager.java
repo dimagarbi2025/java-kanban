@@ -26,6 +26,9 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllTasks() {
+        for (Integer taskId : tasks.keySet()) {
+            historyManager.getHistory().remove(historyManager.getHistory().get(taskId));
+        }
         tasks.clear();
     }
 
@@ -53,6 +56,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteTaskById(int id) {
         tasks.remove(id);
+        if (!historyManager.getHistory().isEmpty()) {
+            historyManager.getHistory().remove(id);
+        }
     }
 
     // Методы для model.Epic
@@ -64,6 +70,9 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllEpics() {
+        for (Integer epicId : epics.keySet()) {
+            historyManager.getHistory().remove(historyManager.getHistory().get(epicId));
+        }
         epics.clear();
         subtasks.clear();
     }
@@ -101,6 +110,9 @@ public class InMemoryTaskManager implements TaskManager {
                 }
             }
         }
+        if (!historyManager.getHistory().isEmpty()) {
+            historyManager.getHistory().remove(id);
+        }
     }
 
     @Override
@@ -127,6 +139,10 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteAllSubtasks() {
 
+        for (Integer subtaskId : subtasks.keySet()) {
+            historyManager.getHistory().remove(historyManager.getHistory().get(subtaskId));
+        }
+
         for (Epic epic : epics.values()) {
             epic.clearSubtaskIds();
         }
@@ -135,6 +151,7 @@ public class InMemoryTaskManager implements TaskManager {
         for (Epic epic : epics.values()) {
             epic.setStatus(TaskStatus.NEW);
         }
+
     }
 
     @Override
@@ -178,6 +195,9 @@ public class InMemoryTaskManager implements TaskManager {
                 epic.removeSubtaskId(subtask.getId());
                 updateEpicStatus(epic.getId());
             }
+        }
+        if (!historyManager.getHistory().isEmpty()) {
+            historyManager.getHistory().remove(id);
         }
     }
 
